@@ -1,9 +1,10 @@
-﻿#include <iostream>
+﻿//重要：这个程序只是包含了一些简单的函数，main函数只是用于调试
+#include <iostream>
 #include <math.h>
 #include <time.h>
-#define pi 3.141592653589793
-#define SAMP_NUM samp_num
-#define T 5
+#define pi 3.141592653589793//π值，后续用到
+#define SAMP_NUM samp_num//只是为了防止写错。。。
+#define T 5//可以更改
 #define samp 0.0025
 #define float double
 #define amp 0.01
@@ -78,7 +79,7 @@ V mutiply(float x1, float y1, float z1, float x2, float y2, float z2) {
 	V.z = x1 * y2 - y1 * x2;
 	return V;
 }
-void W2B(float q0, float q1, float q2, float q3, float &BX, float &BY, float &BZ)
+void W2B(float q0, float q1, float q2, float q3, float &BX, float &BY, float &BZ)//这个函数100年以后再写
 {
 
 	
@@ -90,14 +91,14 @@ void RK(float& q01, float& q11, float& q21, float& q31, float& q0, float& q1, fl
 	q11 = q1 + 0.5 * t * (wx * q0 - wy * q3 + wz * q2);
 	q21 = q2 + 0.5 * t * (wx * q3 + wy * q0 + wz * q1);
 	q31 = q3 + 0.5 * t * (-wx * q2 + wy * q1 + wz * q0);
-}
+}//荣格库塔函数，用于运动的合成
 float WhiteNoise() {
 	float a, b, x;
 	a = ((float)rand())/ 32767;
 	b = ((float)rand()) / 32767;
 	x = sqrt((-2) * log(a)) * cos(2 * pi * b);
 	return x;
-}
+}//噪声模拟
 float wave(int t) {
 
 	return amp * sin(samp * t + phase);
