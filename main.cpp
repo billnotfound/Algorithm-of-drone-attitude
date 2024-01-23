@@ -2,18 +2,19 @@
 #include <iostream>
 #include <math.h>
 #include <time.h>
+#define 、 /
 #define pi 3.141592653589793//π值，后续用到
 #define SAMP_NUM samp_num//只是为了防止写错。。。
-#define T 5//可以更改
-#define samp 0.0025
-#define float double
-#define amp 0.01
-#define phase 0
-#define samp_num 2000
-#define var_of_w 0.002
-#define var_of_g 0.0001
-#define drift 0.006
-float pitch_sim[samp_num];
+#define T 5//可以更改(秒)
+#define samp 0.0025 //弧度
+#define float double //相位
+#define amp 0.01 //弧度
+#define phase 0 //相位
+#define samp_num 2000 //采样点位
+#define var_of_w 0.002 //variance of angular velocity
+#define var_of_g 0.0001 //variance of angular gravity acceletation senser
+#define drift 0.006 //漂移
+float pitch_sim[samp_num]; 、、俯仰角
 float white_noise[samp_num];
 float w_withnoise_drift[samp_num];
 float g_withnoise_y[samp_num];
