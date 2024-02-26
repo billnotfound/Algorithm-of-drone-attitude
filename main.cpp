@@ -2,7 +2,6 @@
 #include <iostream>
 #include <math.h>
 #include <time.h>
-#define 、 /
 #define pi 3.141592653589793//π值，后续用到
 #define SAMP_NUM samp_num//只是为了防止写错。。。
 #define T 5//可以更改(秒)
@@ -14,8 +13,8 @@
 #define var_of_w 0.002 //variance of angular velocity
 #define var_of_g 0.0001 //variance of angular gravity acceletation senser
 #define drift 0.006 //漂移
-float pitch_sim[samp_num]; 、、俯仰角
-float white_noise[samp_num];
+float pitch_sim[samp_num]; //俯仰角
+float white_noise[samp_num];//噪声
 float w_withnoise_drift[samp_num];
 float g_withnoise_y[samp_num];
 float g_withnoise_z[samp_num];
@@ -24,7 +23,7 @@ float g_whitenoise[samp_num];
 float a_with_noise_drift[samp_num];
 float a_drift[SAMP_NUM];
 float a_withoutnoise[samp_num];
-float pitch;
+float pitch;//欧拉角部分
 float yaw;
 float roll;
 float pitch_cal_q0[samp_num];
@@ -37,7 +36,7 @@ void E2Q(float X, float Y, float Z, float& q0, float &q1, float &q2, float &q3)
 	q1 = sin(Z / 2) * cos(Y / 2) * cos(X / 2) - cos(Z / 2) * sin(Y / 2) * sin(X / 2);
 	q2 = cos(Z / 2) * sin(Y / 2) * cos(X / 2) + sin(Z / 2) * cos(Y / 2) * sin(X / 2);
 	q3 = cos(Z / 2) * cos(Y / 2) * sin(X / 2) - sin(Z / 2) * sin(Y / 2) * cos(X / 2);
-}
+}//转化
 void Q2E(float q0, float q1, float q2, float q3, float& X, float& Y, float& Z)
 {
 	X = atan2(2 * (q0 * q1 + q2 * q3), (1 - 2 * (q1 * q1 + q2 * q2)));
