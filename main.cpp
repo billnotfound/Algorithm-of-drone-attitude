@@ -1,4 +1,4 @@
-﻿//重要：这个程序只是包含了一些简单的函数，main函数只是用于调试
+//重要：这个程序只是包含了一些简单的函数，main函数只是用于调试
 #include <iostream>
 #include <math.h>
 #include <time.h>
@@ -7,7 +7,7 @@
 #define T 5//可以更改(秒)
 #define samp 0.0025 //弧度
 #define float double //相位
-#define amp 0.01 //弧度
+#define amp 0.01 //弧度.
 #define phase 0 //相位
 #define samp_num 2000 //采样点位
 #define var_of_w 0.002 //variance of angular velocity
@@ -49,7 +49,7 @@ void multiplication(float p0, float p1, float p2, float p3, float q0, float q1, 
 	r1 = p0 * q1 + p1 * q0 + p2 * q3 - p3 * q2;
 	r2 = p0 * q2 - p1 * q3 + p2 * q0 + p3 * q1;
 	r3 = p0 * q3 + p1 * q2 - p2 * q1 + p3 * q0;
-}
+}//四元数乘法
 void rotate(float& p0, float &p1, float &p2, float &p3, float q0, float q1, float q2, float q3)
 {
 	float qp0, qp1, qp2, qp3;
