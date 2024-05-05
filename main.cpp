@@ -60,7 +60,7 @@ void rotate(float& p0, float &p1, float &p2, float &p3, float q0, float q1, floa
 	p1 = qpq1;
 	p2 = qpq2;
 	p3 = qpq3;
-}
+}//
 struct XX { float q0, q1, q2, q3; };
 XX XXX(float t, float wx, float wy, float wz,float q0,float q1,float q2,float q3) {
 	XX q;
@@ -70,7 +70,7 @@ XX XXX(float t, float wx, float wy, float wz,float q0,float q1,float q2,float q3
 	q.q2 = q.q2 + t * (0 + wx * q.q3 + wy * q.q0 - wz * q.q1)/2;
 	q.q3 = q.q3 + t * (0 - wx * q.q3 + wy * q.q1 + wz * q.q0)/2;
 	return q;
-}
+}//
 struct V { float x, y, z; };
 V mutiply(float x1, float y1, float z1, float x2, float y2, float z2) {
 	V V;
@@ -78,14 +78,14 @@ V mutiply(float x1, float y1, float z1, float x2, float y2, float z2) {
 	V.y = z1 * y2 - x1 * z2;
 	V.z = x1 * y2 - y1 * x2;
 	return V;
-}
+}//
 void W2B(float q0, float q1, float q2, float q3, float &BX, float &BY, float &BZ)//这个函数100年以后再写
 {
 
 	
 	
 	return;
-}
+}//
 void RK(float& q01, float& q11, float& q21, float& q31, float& q0, float& q1, float& q2,float& q3,float t,float wx,float wy,float wz) {
 	q01 = q0 + 0.5 * t * (-wx * q1 - wy * q2 - wz * q3);
 	q11 = q1 + 0.5 * t * (wx * q0 - wy * q3 + wz * q2);
@@ -117,7 +117,7 @@ int main()
 	for (i = 0; i < samp_num; i++) {
 		pitch_sim[i] = amp * sin(samp * i * 2 * pi + phase);
 		w_withnoise_drift[i] = (amp * 2 * pi / T) * cos(2*pi*samp * i + phase) + drift + var_of_w * white_noise[i];
-	}
+	}//模拟，可调次数
 	E2Q(0, 0, 0, pitch_cal_q0[0],pitch_cal_q1[0], pitch_cal_q2[0], pitch_cal_q3[0]);
 	float Z, X, Y;
 	for (i = 0;i < 1999;i++)
@@ -125,7 +125,7 @@ int main()
 		RK(pitch_cal_q0[i + 1], pitch_cal_q1[i + 1], pitch_cal_q2[i + 1], pitch_cal_q3[i + 1], pitch_cal_q0[i], pitch_cal_q1[i], pitch_cal_q2[i], pitch_cal_q3[i], samp, w_withnoise_drift[i], 0, 0);
 		Q2E(pitch_cal_q0[i], pitch_cal_q1[i], pitch_cal_q2[i], pitch_cal_q3[i],X,Y,Z);
 		a_with_noise_drift[i]=X;
-	};
+	};//加噪声。。。。
 	float a;
 	for (i = 0; i < samp_num - 500; i++) {
 		a = 0;
@@ -136,7 +136,7 @@ int main()
 		a_drift[i + 250] = a;
 		a_withoutnoise[i + 250] + a_with_noise_drift[i + 250] + a_drift[i + 250];
 		printf("%f,%f\n", i * samp+250, a_drift[i+250]);
-	};
+	};//这里改输出
 	for (i = 0; i < SAMP_NUM - 1; i++) {
 		g_withnoise_x[i] = amp * sin(2 * pi * samp * i + phase) + var_of_g *32* white_noise[i];
 	};
